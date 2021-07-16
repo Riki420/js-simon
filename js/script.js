@@ -37,42 +37,65 @@
 var comNum = [];
 var listUser = [];
 var num = 5;
-var seconds = 5; //!da cambiare con 30
+var seconds = 30; //!da cambiare a seconda dei secondi voluti
 var countElement = document.getElementById('count');
+var counter = 0;
+var listDupli = [];
 
 while(comNum.length < num){
    var randNum = getRandomNumber(1,100);
    comNum.push(randNum); 
 
 }
-alert(comNum);
+
+alert('Ricorda questi numeri: ' + comNum);
 console.log(comNum);
 
-countElement.innerHTML = seconds--;
 
 
 //creare un timer di 30 secondi con setTimeout
 seconds *= 1000;
-var userLost = false;
-
 setTimeout(function(){
-
+    //chiedo i numeri all'utente tramite la funzione getUserNumber
     while (listUser.length < num) {     
         var userNum = getUserNumber(1,100);
         listUser.push(userNum);
 
     }   
     console.log(listUser);
-
-    if(isInArray(userNum, comNum)){      
-        alert('list: ' + listUser + ' COM list: ' + comNum);
-      }else{
-          alert('hai perso')
+    
+    //verifico se i numeri sono uguali e quanti sono
+      for (var i = 0; i < 5; i++) {
+        var numListItem = comNum[i];
+    
+        for (var b = 0; b < 5; b++) {
+    
+            var check = listUser.includes(numListItem, b);
+            var b = 0;
+    
+            do {
+                var check = listUser.includes(numListItem, b);
+    
+                if (check && listDupli.includes(numListItem) == false) {
+                    listDupli.push(numListItem);
+                    counter++;
+                }
+                b++;
+            } while (b < 5);
+        }
       }
-   
+    
+
+      //Stampa su pagina
+      if (counter == 5) {
+        alert('Hai indovinato tutti i numeri, hai vinto!');
+    } else if (counter == 0) {
+        alert('Non hai indovinato nessun numero.');
+    } else {
+        alert('Hai indovinato ' + counter + ' numeri: ' + listDupli);
+    }
+    
 }, seconds);
-
-
 
 
 
@@ -113,3 +136,5 @@ function isInArray(needle, arr){
     } while(!number || isNaN(number) || number < min || number > max);
     return parseInt(number);   
   }
+
+  
