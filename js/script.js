@@ -37,15 +37,35 @@
 var comNum = [];
 var listUser = [];
 var num = 5;
-var seconds = 30;
+var seconds = 5; //!da cambiare con 30
+var countElement = document.getElementById('count');
 
 while(comNum.length < num){
-   var randNum = getRandomNumber(1,num);
+   var randNum = getRandomNumber(1,100);
    comNum.push(randNum); 
 
 }
 alert(comNum);
+console.log(comNum);
 
+
+
+//creare un timer di 30 secondi con setTimeout
+seconds *= 1000;
+var userLost = false;
+
+setTimeout(function(){
+    countElement.innerHTML = seconds--;
+
+    while (listUser.length < num) {     
+        var userNum = getUserNumber(1,100);
+        listUser.push(userNum);
+
+    }   
+    console.log(listUser);
+
+   
+}, seconds);
 
 
 
