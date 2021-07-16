@@ -33,4 +33,58 @@
 //* 4 Stabilisco se i numeri dell'utente coincidono con quelli iniziali
 
 
+//genero i numeri del computer
+var comNum = [];
+var listUser = [];
+var num = 5;
+var seconds = 30;
 
+while(comNum.length < num){
+   var randNum = getRandomNumber(1,num);
+   comNum.push(randNum); 
+
+}
+alert(comNum);
+
+
+// 
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------//
+//                                DICHIARAZIONI FUNZIONI                                //
+//--------------------------------------------------------------------------------------//
+
+
+//funzione numeri random COM
+function getRandomNumber(min,max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+
+  //funzione per replicare un .includes()
+function isInArray(needle, arr){
+    var found = false;
+    var i = 0;
+    while(!found && i < arr.length){
+      if(needle === arr[i]){
+        found = true;
+      }
+      i++;
+    }
+    return found;
+  }
+
+
+  //funzione per chiedere i numeri all'utetnte
+  function getUserNumber(min,max){
+    var number;
+    do{
+      number = parseInt(prompt('Inserisci un numero'));
+    } while(!number || isNaN(number) || number < min || number > max);
+    return parseInt(number);   
+  }
