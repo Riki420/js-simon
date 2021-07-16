@@ -37,8 +37,9 @@
 var comNum = [];
 var listUser = [];
 var num = 5;
-var seconds = 30; //!da cambiare a seconda dei secondi voluti
+var seconds = 1; //!da cambiare a seconda dei secondi voluti
 var countElement = document.getElementById('count');
+var resultElement = document.getElementById('result');
 var counter = 0;
 var listDupli = [];
 
@@ -88,11 +89,12 @@ setTimeout(function(){
 
       //Stampa su pagina
       if (counter == 5) {
-        alert('Hai indovinato tutti i numeri, hai vinto!');
+        resultElement.innerHTML = 'Hai vinto, hai indovinato tutti i numeri, ecco i numeri del COM: ' + comNum + '.<br> Ecco invece i tuoi: ' + listUser
+        
     } else if (counter == 0) {
-        alert('Non hai indovinato nessun numero.');
+        resultElement.innerHTML = 'Hai perso, non hai indovinato nemmeno un numero, ecco i numeri del COM: ' + comNum + '.<br> Ecco invece i tuoi: ' + listUser
     } else {
-        alert('Hai indovinato ' + counter + ' numeri: ' + listDupli);
+        resultElement.innerHTML = 'Non hai ne vinto ne perso, hai semplicemente indovinato ' + counter + ' numeri: ' + listDupli + '.<br> La lista completa dei numeri del COM era questa: ' + comNum;
     }
     
 }, seconds);
