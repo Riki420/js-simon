@@ -48,6 +48,7 @@ while(comNum.length < num){
 alert(comNum);
 console.log(comNum);
 
+countElement.innerHTML = seconds--;
 
 
 //creare un timer di 30 secondi con setTimeout
@@ -55,7 +56,6 @@ seconds *= 1000;
 var userLost = false;
 
 setTimeout(function(){
-    countElement.innerHTML = seconds--;
 
     while (listUser.length < num) {     
         var userNum = getUserNumber(1,100);
@@ -64,6 +64,11 @@ setTimeout(function(){
     }   
     console.log(listUser);
 
+    if(isInArray(userNum, comNum)){      
+        alert('list: ' + listUser + ' COM list: ' + comNum);
+      }else{
+          alert('hai perso')
+      }
    
 }, seconds);
 
