@@ -47,7 +47,7 @@ while(comNum.length < num){
 alert(comNum);
 
 
-// 
+
 
 
 
